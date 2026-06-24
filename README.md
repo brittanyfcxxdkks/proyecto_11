@@ -14,10 +14,6 @@ shinyApp(ui, server), inicia la aplicación Shiny conectando la interfaz de usua
 
 
 
-
-
-
-
 Código pregunta 3:
 
 Este código utiliza la librería ggplot2 para generar un gráfico de dispersión a partir del conjunto de datos quakes. La función ggplot(quakes, aes(x = long, y = lat)) establece que la longitud (long) se representará en el eje horizontal y la latitud (lat) en el eje vertical. Posteriormente, geom_point(color = "orange", alpha = 0.7) dibuja un punto por cada terremoto registrado, asignándole un color naranja y un nivel de transparencia que facilita la visualización cuando varios puntos se encuentran cercanos entre sí. La función labs() agrega un título descriptivo y etiquetas a los ejes, mientras que theme_minimal() aplica un diseño simple que mejora la claridad del gráfico. Se eligió un gráfico de dispersión porque permite visualizar la ubicación geográfica de cada terremoto mediante sus coordenadas de latitud y longitud, lo que facilita identificar patrones espaciales, zonas de concentración de actividad sísmica y la distribución general de los eventos registrados en la base de datos.
@@ -25,3 +21,16 @@ Este código utiliza la librería ggplot2 para generar un gráfico de dispersió
 Código pregunta 1:
 
 Primero se cargan las librerías Shiny y ggplot2. En la interfaz de usuario (ui), se configura un diseño de panel lateral (sidebarLayout); el panel lateral muestra un texto informativo y el principal (mainPanel) reserva el espacio para dos gráficos mediante plotOutput(), separados por una línea horizontal (hr()). Por su parte, el servidor server maneja la lógica de la aplicación. Aunque la plantilla inicial procesa por error el conjunto de datos faithful, la lógica real se define abajo con ggplot2 sobre la base de datos quakes. El primer gráfico utiliza geom_histogram(binwidth = 0.2) para mostrar la frecuencia de las magnitudes en un histograma azul oscuro, mientras que el segundo emplea geom_boxplot() para generar un diagrama de caja vertical verde claro que resalta los valores atípicos en rojo. En ambos gráficos, labs() añade los títulos y theme_minimal() define el diseño estético, usando además theme() en el boxplot para ocultar el eje X. Finalmente, shinyApp(ui, server) enlaza ambos componentes para iniciar la aplicación.
+
+
+Código pregunta 2 
+Para responder esta pregunta se utilizan las librerías shiny, ggplot2, dplyr y DT. El código genera rangos de magnitud a partir del conjunto de datos quakes y presenta los resultados mediante un grafico de barras y tablas interactivas. Se emplean las funciones mutate(), cut(), breaks y labels paara crear los intervalos de magnitud y asignarles nombres. Además, se calculan las frecuencias para construir una tabla que contiene el rango de magnitud, la frecuencia absoluta y el porcentaje correspondiente a cada categoria. El grafico de barras unsa los rangos de magnitud y sus frecuencias para visualizar cuales son los intervalos mas frecuentes. Finalmente, se incorpora una tabla interactiva, creada con DT, que muestra 5 filas por pagina y tambien las frecuencias absolutas y los porcentajes de cada rango.
+
+Código de pregunta 4
+Para responder esta pregunta se utilizan las librerias shiny, ggplot2, dplyr y DT. El código genera una nueva columna y con input$intervalo se realiza un slider en la interfaz, que permite elegir el ancho de agrupacion y la funcion round redondea cada magitud al mutiplo mas cercano del intervalo, por ende se agrupan las magnitudes en bloques. Además, se agrupan los datos por cada rango y se calcula el promediode estaciones que registraron los terremotos para asi obtener una tabla. El grafico utilizado es un grafico de lineas que permite dibujar la linea, los puntos que muestra como aunmenta o disminuye el promedio de estaciones conforme cambia la magnitud. Finalmente, esta la interfaz del slider que permite elejir el tamaño del intervalo cambiando dinamicamente como se agrupan las magnitudes.
+
+
+
+
+
+
